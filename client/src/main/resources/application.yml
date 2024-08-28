@@ -1,0 +1,11 @@
+spring:
+  config:
+    import: optional:file:.env[.properties]
+server:
+  port: 8086
+
+grpc:
+  client:
+    data-generator-blocking:
+      address: localhost:8980
+      negotiation-type: plaintext

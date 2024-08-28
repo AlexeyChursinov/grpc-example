@@ -1,0 +1,44 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "com.example.grpc";
+option java_outer_classname = "GeneratorProto";
+
+package service;
+
+import "google/protobuf/empty.proto";
+
+service UserServer {
+  rpc addUser(GRPCUserRequest) returns (google.protobuf.Empty);
+  rpc getUser(UserId) returns (GRPCUserResponse);
+  rpc deleteUser(UserId) returns (google.protobuf.Empty);
+  rpc getUsers(google.protobuf.Empty) returns (GRPCUsersResponse);
+}
+
+message GRPCUserRequest {
+  string firstName = 1;
+  string lastName = 2;
+  string email = 3;
+  int32 regionCode = 4;
+}
+
+message UserId {
+  int64 id = 1;
+}
+
+message GRPCRegion {
+  string regionName = 1;
+  int32 regionCode = 2;
+}
+
+message GRPCUserResponse {
+  int64 id = 1;
+  string firstName = 2;
+  string lastName = 3;
+  string email = 4;
+  GRPCRegion region = 5;
+}
+
+message GRPCUsersResponse {
+  repeated GRPCUserResponse users = 1;
+}
