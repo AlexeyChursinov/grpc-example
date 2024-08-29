@@ -7,5 +7,5 @@ server:
 grpc:
   client:
     data-generator-blocking:
-      address: localhost:8980
+      address: server:8980
       negotiation-type: plaintext
